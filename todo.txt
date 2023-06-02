@@ -1,0 +1,9 @@
+taken:
+    retrieve recente leauge informatie (laatste wedstrijd, opkomende wedstrijden, scores)
+        compile naar format
+        secure if needed
+
+    Post informatie naar sms service
+        mobiel nummer doorgeven / andere gebruikers informatie
+        service token
+        op aanvraag of op bepaalde momenten
