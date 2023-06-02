@@ -16,6 +16,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+//keys
+var CmProductToken = builder.Configuration["CM:ProductToken"];
+var SportsApiKey = builder.Configuration["SportsApi:ApiKey"];
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

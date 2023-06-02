@@ -2,8 +2,9 @@ taken:
     retrieve recente leauge informatie (laatste wedstrijd, opkomende wedstrijden, scores)
         compile naar format
         secure if needed
+        token sports api: done
 
     Post informatie naar sms service
         mobiel nummer doorgeven / andere gebruikers informatie
-        service token
+        service token : done
         op aanvraag of op bepaalde momenten
