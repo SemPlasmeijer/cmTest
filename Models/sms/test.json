@@ -1,0 +1,20 @@
+{
+  "messages": {
+    "authentication": {
+      "productToken": ""
+    },
+    "msg": [
+      {
+        "allowedChannels": ["SMS"],
+        "from": "Sem",
+        "to": [{ "number": "" }],
+        "minimumNumberOfMessageParts": 1,
+        "maximumNumberOfMessageParts": 8,
+        "body": {
+          "type": "auto",
+          "content": ""
+        }
+      }
+    ]
+  }
+}

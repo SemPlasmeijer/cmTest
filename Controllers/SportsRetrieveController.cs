@@ -1,7 +1,11 @@
 using cmTest.Models;
+using cmTest.Models.basketball;
 using Microsoft.AspNetCore.Mvc;
 using RestSharp;
 using RestSharp.Authenticators;
+using cmTest.Services.interfaces;
+using cmTest.Services;
+
 
 namespace cmTest.Controllers;
 
@@ -9,31 +13,26 @@ namespace cmTest.Controllers;
 [Route("[controller]")]
 public class SportsApiRetrieveController
 {
-    private readonly IConfiguration _config;
     private readonly ILogger<SportsApiRetrieveController> _logger;
 
-    private RestClient client = new RestClient("https://v3.football.api-sports.io/");
+    private IBasketballRetrievalService _BasketballService;
 
-
-    public SportsApiRetrieveController(IConfiguration config, ILogger<SportsApiRetrieveController> logger)
+    public SportsApiRetrieveController(ILogger<SportsApiRetrieveController> logger, IBasketballRetrievalService basketballService)
     {
-        _config = config;
         _logger = logger;
-
-        if (config != null)
-        {
-            client.AddDefaultHeader("x-rapidapi-key", config["SportsApi:ApiKey"]);
-            client.AddDefaultHeader("x-rapidapi-host", "v3.football.api-sports.io");
-        }
+        _BasketballService = basketballService;
     }
 
     [HttpGet("Status")]
     public async Task<Status> getSportsApiStatus()
     {
-        var request = new RestRequest("status");
+        return await _BasketballService.getApiStatus();
+    }
 
-        var status = await client.GetAsync<Status>(request);
-
-        return status;
+    [HttpGet("GamesToday")]
+    public async Task<String> getTodaysGamesList()
+    {
+        //should be datetime.Now but for testing this date will be selected.
+        return await _BasketballService.getGamesList(new DateTime(2023, 1, 4));
     }
 }
